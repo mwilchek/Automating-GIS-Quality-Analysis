@@ -162,10 +162,10 @@ class Application:
     def execute(self):
         start = time.time()
         self.update_clock()
-        mspFME_Int = r'FME_Workspaces\oidmu2msp_v2.fmw'  # integer
-        mspFME_Percent = r'FME_Workspaces\oidmu2msp.fmw'  # percentage
-        mspFME = r'FME_Workspaces\oidmu2msp.fmw'  # default
-        blocksFME = r'FME_Workspaces\natgeo2tabblock.fmw'
+        mspFME_Int = os.getcwd() + r'\Resources\oidmu2msp_v2.fmw'  # integer
+        mspFME_Percent = os.getcwd() + r'\Resources\oidmu2msp.fmw'  # percentage
+        mspFME = os.getcwd() + r'\Resources\oidmu2msp.fmw'  # default
+        blocksFME = os.getcwd() + r'\Resources\natgeo2tabblock.fmw'
         table_drop = "yes"
         workspace_gdb = self.getGDB()
         fileParam = self.getFileParameter()
@@ -200,6 +200,9 @@ class Application:
                     quit()
 
                 counter = 0
+                passes = 0
+                fails = 0
+                checks = 0
 
                 for blk in blkCur:
                     counter += 1
@@ -221,6 +224,8 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["PREV_TAB40", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                         if vintage == "TAB40OID":
                             if i.TAB40OID != blk.OID:
@@ -228,6 +233,8 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["TAB40", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                         if vintage == "TAB_CURR_OID":
                             if i.TAB_CURR_OID != blk.OID:
@@ -235,6 +242,8 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["TAB_CURR", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                         if vintage == "FACE_ID":
                             if i.FACE_ID != blk.OID:
@@ -242,6 +251,8 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["FACE_ID", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                         if vintage == "CS_FACE_ID":
                             if i.CS_FACE_ID != blk.OID:
@@ -249,6 +260,8 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["CS_FACE_ID", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                         if vintage == "CS_TAB40OID":
                             if i.CS_TAB40OID != blk.OID:
@@ -256,6 +269,8 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["CS_TAB40", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                         if vintage == "BCUOID":
                             if i.BCUOID != blk.OID:
@@ -263,10 +278,14 @@ class Application:
                                 blkTestFail = True
                                 writer.writerow(["BCU", counter, "POINT FAILURE", i.OIDMU, blk.OID])
                                 csvfile.flush()
+                                fails += 1
+                                checks += 1
 
                     if blkTestFail:
                         print "Failure at Block OID"
                         print ""
+                        fails += 1
+                        checks += 1
 
                     # If all msp points in right block, record block pass
                     else:
@@ -274,14 +293,20 @@ class Application:
                         print ""
                         writer.writerow([str(vintage), counter, "BLOCK PASSES", "ALL POINTS PASS", blk.OID])
                         csvfile.flush()
+                        passes += 1
+                        checks += 1
 
                 arcpy.Delete_management(featBlk)  # delete from memory
-            arcpy.Delete_management(block_layer_name)  # delete from memory
-
             csvfile.close()
 
-            tkMessageBox.showinfo('QC Complete', os.path.abspath(filename)
-                                  + ' results have been saved to the directory.')
+            # cleanup
+            arcpy.Delete_management(block_layer_name)  # delete from memory
+            passesS = "{0:.0f}%".format((passes / checks) * 100)
+            failsS = "{0:.0f}%".format((fails / checks) * 100)
+
+            tkMessageBox.showinfo('QC Complete', os.path.abspath(filename) + ' results have been saved to the '
+                                                                             'directory. \nPass Percentage: ' + passesS +
+                                  '\nFailure Percentage: ' + failsS)
 
         if fileParam != "":
             fileParam = pd.read_csv(fileParam, header=0, thousands=',')
