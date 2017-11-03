@@ -8,7 +8,7 @@ import sys
 import logging
 import shutil
 from Data_Standardization.LocalFileExtraction import LocalExtraction
-from Matching_Algorithms.Matching_KH import Match
+from Matching_Algorithms.Matching import Match
 
 pip.main(['install', '--upgrade', 'pygubu'])
 import pygubu
