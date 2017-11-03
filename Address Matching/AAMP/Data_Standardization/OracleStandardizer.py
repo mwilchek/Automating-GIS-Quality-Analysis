@@ -4,7 +4,6 @@ import pandas as pd
 import os
 import re
 
-# 09-19-17 added logic to verify only getting ZIP5s in getBlockingInfo
 
 class OracleStandardizer():
     def __init__(self, userName, passWord, env):
