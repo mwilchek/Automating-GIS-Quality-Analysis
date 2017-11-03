@@ -13,7 +13,7 @@ pd.set_option('display.height', 1000)
 pd.set_option('display.max_rows', 10)
 pd.set_option('display.width', 1000)
 master_record_count = 0
-jellyPath = r'\\geo017app-fs\ACAPB\Kevin H\GQ_Standardizer_Research\misc\Substitution_Confidence_Richard\jellyfish-0.5.1'
+jellyPath = os.getcwd() + '\jellyfish-0.5.1'
 sys.path.append(jellyPath)
 import jellyfish
 
