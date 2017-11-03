@@ -1,0 +1,532 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="ttk.Frame" id="File2MAF">
+    <property name="height">250</property>
+    <property name="padding">10</property>
+    <property name="width">250</property>
+    <layout>
+      <property name="column">0</property>
+      <property name="propagate">True</property>
+      <property name="row">0</property>
+    </layout>
+    <child>
+      <object class="ttk.Label" id="Label_1">
+        <property name="anchor">center</property>
+        <property name="font">{Century Gothic} 14 {bold}</property>
+        <property name="text" translatable="yes">File to MAF Matching</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">4</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="rowspan">1</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_1">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">4</property>
+          <property name="ipady">1</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="jbid">
+        <property name="anchor">w</property>
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">JBID:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="Label_3">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Password:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="username_entry">
+        <property name="textvariable">string:username_entry</property>
+        <property name="validate">key</property>
+        <property name="validatecommand_args">%P</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="pass_entry">
+        <property name="show">•</property>
+        <property name="textvariable">string:password_entry</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_3">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="ipady">2</property>
+          <property name="pady">6</property>
+          <property name="propagate">True</property>
+          <property name="row">7</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="execute">
+        <property name="command">execute</property>
+        <property name="text" translatable="yes">Execute Matching</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="propagate">True</property>
+          <property name="row">21</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ParamFile">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Local File:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">9</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="pygubu.builder.widgets.pathchooserinput" id="pathchooserinput_1">
+        <property name="textvariable">string:fileParameter</property>
+        <property name="type">file</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">9</property>
+          <property name="sticky">e</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="login_label">
+        <property name="text" translatable="yes">Please create a name for this Matching Project and enter your login credentials for the Oracle database.</property>
+        <property name="wraplength">300</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="step1">
+        <property name="font">{Arial} 12 {bold underline}</property>
+        <property name="text" translatable="yes">Step 1</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipady">2</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="step2">
+        <property name="font">{Arial} 12 {bold underline}</property>
+        <property name="text" translatable="yes">Step 2</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">8</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="step2_label">
+        <property name="text" translatable="yes">Select the File to Match to the Database:</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">9</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_2">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="ipady">2</property>
+          <property name="pady">6</property>
+          <property name="propagate">True</property>
+          <property name="row">10</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="step3">
+        <property name="font">{Arial} 12 {bold underline}</property>
+        <property name="text" translatable="yes">Step 3</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">11</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="step3_label">
+        <property name="text" translatable="yes">Select what Matching Parameters you want. If you need help selecting what paramters, please refer to the "Help" button under the AAMP Aplication for additional documentation.</property>
+        <property name="wraplength">300</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="blocking_label">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Blocking Type:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">11</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Combobox" id="block_choices">
+        <property name="textvariable">string:blockingType</property>
+        <property name="values">ZIP Others</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">11</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="mlevel_label">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">BSA/WSID Matching:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="thold_label">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Min. Street Core Score:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Combobox" id="mlevel_choices">
+        <property name="textvariable">string:mLevel</property>
+        <property name="values">NARROW WIDE</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Spinbox" id="jw_score">
+        <property name="from_">0.00</property>
+        <property name="increment">0.01</property>
+        <property name="textvariable">double:jwThreshold</property>
+        <property name="to">1.00</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="level_label">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Street Dir. Matching:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">14</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Combobox" id="lvl_label">
+        <property name="textvariable">string:lvl</property>
+        <property name="values">EXACT CLOSE ALL</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="ipady">0</property>
+          <property name="pady">6</property>
+          <property name="propagate">True</property>
+          <property name="row">14</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_4">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="ipady">2</property>
+          <property name="pady">6</property>
+          <property name="propagate">True</property>
+          <property name="row">15</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="step4_label">
+        <property name="font">{Arial} 12 {bold underline}</property>
+        <property name="text" translatable="yes">Step 4</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="ipady">1</property>
+          <property name="pady">5</property>
+          <property name="propagate">True</property>
+          <property name="row">16</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="step5_label">
+        <property name="justify">left</property>
+        <property name="text" translatable="yes">Select what level of detail you would like your results file to have.</property>
+        <property name="wraplength">300</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">17</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="detail_label">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Report Detail:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">16</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Combobox" id="dtail_choice">
+        <property name="textvariable">string:detail</property>
+        <property name="values">BEST ALL</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">16</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Separator" id="Separator_5">
+        <property name="orient">horizontal</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="ipady">5</property>
+          <property name="pady">5</property>
+          <property name="propagate">True</property>
+          <property name="row">20</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Progressbar" id="Progressbar">
+        <property name="mode">determinate</property>
+        <property name="orient">horizontal</property>
+        <property name="variable">int:progress</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="columnspan">3</property>
+          <property name="ipady">0</property>
+          <property name="pady">4</property>
+          <property name="propagate">True</property>
+          <property name="row">22</property>
+          <property name="sticky">ew</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="project">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Name for this Project:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Entry" id="project_name">
+        <property name="textvariable">string:projectName</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="directory_label">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Output Directory:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">17</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="pygubu.builder.widgets.pathchooserinput" id="output_path">
+        <property name="textvariable">string:outputPath</property>
+        <property name="type">directory</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">17</property>
+          <property name="sticky">e</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="testConnection">
+        <property name="command">test_connection</property>
+        <property name="text" translatable="yes">Test Connection</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="pady">2</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+          <property name="sticky">e</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="db_name">
+        <property name="font">{Calibri} 12 {bold underline}</property>
+        <property name="foreground">#0080ff</property>
+        <property name="text" translatable="yes">Database:</property>
+        <layout>
+          <property name="column">1</property>
+          <property name="ipady">1</property>
+          <property name="padx">5</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Combobox" id="db_choices">
+        <property name="textvariable">string:env</property>
+        <property name="values">PRODTRAN DEVTRAN</property>
+        <layout>
+          <property name="column">2</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
